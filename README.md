@@ -6,6 +6,53 @@ Bem-vindo ao projeto Meu Projeto! Este projeto é uma aplicação Python que dem
 
 O projeto está organizado da seguinte maneira:
 
+```plaintext
+meu_projeto/
+├── app/
+│ ├── init.py
+│ ├── routes.py
+│ └── templates/
+│ ├── index.html
+│ ├── cadastro_tarefa.html
+│ └── cadastro_usuario.html
+├── modules/
+│ ├── init.py
+│ ├── autenticacao/
+│ │ ├── init.py
+│ │ ├── autenticacao_routes.py
+│ │ ├── autenticacao_bll.py
+│ │ └── autenticacao_dal.py
+│ ├── gestao_de_tarefa/
+│ │ ├── init.py
+│ │ ├── tarefa_routes.py
+│ │ ├── bll/
+│ │ │ └── tarefa_bll.py
+│ │ ├── dal/
+│ │ │ └── tarefa_dal.py
+│ │ └── models/
+│ │ └── tarefa.py
+│ └── gestao_de_usuario/
+│ ├── init.py
+│ ├── usuario_routes.py
+│ ├── bll/
+│ │ └── usuario_bll.py
+│ ├── dal/
+│ │ └── usuario_dal.py
+│ └── models/
+│ └── usuario.py
+├── tests/
+│ ├── init.py
+│ ├── test_autenticacao.py
+│ ├── test_gestao_de_tarefa.py
+│ └── test_gestao_de_usuario.py
+├── docs/
+│ ├── guia_do_usuario.md
+│ └── api_reference.md
+├── dockerfile
+├── .gitignore
+└── readme.md
+```
+
 - **app/**: Contém os arquivos relacionados à aplicação principal.
   - **\_\_init\_\_.py**: Arquivo de inicialização da aplicação.
   - **routes.py**: Arquivo contendo as rotas da aplicação.
