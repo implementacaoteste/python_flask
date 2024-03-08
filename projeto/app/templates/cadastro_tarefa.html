@@ -1,0 +1,19 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Tarefa</title>
+</head>
+<body>
+    <h1>Cadastro de Nova Tarefa</h1>
+    <form action="/submit_tarefa" method="post">
+        <label for="titulo">Título da Tarefa:</label><br>
+        <input type="text" id="titulo" name="titulo" required><br>
+        <label for="descricao">Descrição:</label><br>
+        <textarea id="descricao" name="descricao" rows="4" cols="50" required></textarea><br>
+        <button type="submit">Cadastrar Tarefa</button>
+    </form>
+</body>
+</html>

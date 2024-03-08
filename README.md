@@ -7,50 +7,54 @@ Bem-vindo ao projeto Meu Projeto! Este projeto é uma aplicação Python que dem
 O projeto está organizado da seguinte maneira:
 
 ```plaintext
-meu_projeto/
-├── app/
-│ ├── init.py
-│ ├── routes.py
-│ └── templates/
-│ ├── index.html
-│ ├── cadastro_tarefa.html
-│ └── cadastro_usuario.html
-├── modules/
-│ ├── init.py
-│ ├── autenticacao/
-│ │ ├── init.py
-│ │ ├── autenticacao_routes.py
-│ │ ├── autenticacao_bll.py
-│ │ └── autenticacao_dal.py
-│ ├── gestao_de_tarefa/
-│ │ ├── init.py
-│ │ ├── tarefa_routes.py
-│ │ ├── bll/
-│ │ │ └── tarefa_bll.py
-│ │ ├── dal/
-│ │ │ └── tarefa_dal.py
-│ │ └── models/
-│ │ └── tarefa.py
-│ └── gestao_de_usuario/
-│ ├── init.py
-│ ├── usuario_routes.py
-│ ├── bll/
-│ │ └── usuario_bll.py
-│ ├── dal/
-│ │ └── usuario_dal.py
-│ └── models/
-│ └── usuario.py
-├── tests/
-│ ├── init.py
-│ ├── test_autenticacao.py
-│ ├── test_gestao_de_tarefa.py
-│ └── test_gestao_de_usuario.py
-├── docs/
-│ ├── guia_do_usuario.md
-│ └── api_reference.md
-├── dockerfile
+python_flask/
 ├── .gitignore
-└── readme.md
+├── dockerfile
+├── LICENSE
+├── README.md
+├── requirements.txt
+└── projeto/
+    ├── app/
+    │   ├── __init__.py
+    │   ├── routes.py
+    │   └── templates/
+    │       ├── index.html
+    │       ├── cadastro_tarefa.html
+    │       └── cadastro_usuario.html
+    ├── docs/
+    │   ├── guia_do_usuario.md
+    │   └── api_reference.md
+    ├── modules/
+    │   ├── __init__.py
+    │   ├── autenticacao/
+    │   │   ├── __init__.py
+    │   │   ├── autenticacao_routes.py
+    │   │   ├── autenticacao_bll.py
+    │   │   └── autenticacao_dal.py
+    │   ├── gestao_de_tarefa/
+    │   │   ├── __init__.py
+    │   │   ├── tarefa_routes.py
+    │   │   ├── bll/
+    │   │   │   └── tarefa_bll.py
+    │   │   ├── dal/
+    │   │   │   └── tarefa_dal.py
+    │   │   └── models/
+    │   │       └── tarefa.py
+    │   └── gestao_de_usuario/
+    │       ├── __init__.py
+    │       ├── usuario_routes.py
+    │       ├── bll/
+    │       │   └── usuario_bll.py
+    │       ├── dal/
+    │       │   └── usuario_dal.py
+    │       └── models/
+    │           └── usuario.py
+    └── tests/
+        ├── __init__.py
+        ├── test_autenticacao.py
+        ├── test_gestao_de_tarefa.py
+        └── test_gestao_de_usuario.py
+
 ```
 
 - **app/**: Contém os arquivos relacionados à aplicação principal.
@@ -109,3 +113,23 @@ Este projeto segue o modelo de fluxo de trabalho Gitflow para gerenciar o desenv
 - **Git Flow Cheat Sheet**: Um guia útil para comandos Gitflow: [Git Flow Cheat Sheet](https://danielkummer.github.io/git-flow-cheatsheet/)
 
 Ao seguir o Gitflow, esperamos manter um fluxo de trabalho consistente e organizado durante todo o ciclo de vida do projeto.
+
+
+### Para executar o projeto rode o script abaixo no terminal
+
+```
+#!/bin/bash
+
+# Remova os contêineres existentes
+docker rm -f docker_flask meu_container_flask
+
+# Remova a imagem docker_flask existente
+docker rmi $(docker images -q docker_flask)
+
+# Construa a nova imagem docker_flask
+docker build -t docker_flask:v1.3 .
+
+# Execute o contêiner docker_flask
+docker run -d --name docker_flask -p 5000:5000 -v "$(pwd)/projeto:/app" docker_flask:v1.3
+
+```
