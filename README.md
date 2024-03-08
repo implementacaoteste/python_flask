@@ -35,3 +35,30 @@ O projeto está organizado da seguinte maneira:
 - **Funções e Métodos**: Utilizam o padrão snake_case para os nomes das funções e métodos.
 - **Constantes**: Utilizam letras maiúsculas separadas por underline. Exemplo: `TAMANHO_MAXIMO`.
 
+## Gitflow
+
+Este projeto segue o modelo de fluxo de trabalho Gitflow para gerenciar o desenvolvimento de novos recursos, correções de bugs e releases. O Gitflow é um fluxo de trabalho de branching que fornece uma estrutura robusta para colaboração em projetos de grande escala.
+
+### Principais Branches
+
+- **main**: Representa a versão de produção do software. Os commits nesta branch refletem o estado atual do código em produção.
+- **develop**: Branch de desenvolvimento principal. Novos recursos e correções de bugs são integrados nesta branch antes de serem mesclados na main.
+- **feature/**: Branches de recursos individuais. Cada nova funcionalidade é desenvolvida em uma branch separada a partir de `develop`. Quando concluída, a branch de recurso é mesclada de volta para `develop`.
+- **release/**: Branches de preparação para uma nova versão. Criadas a partir de `develop`, elas são usadas para finalizar os detalhes da próxima release. Quando pronta, a branch de release é mesclada para `main` e `develop`.
+- **hotfix/**: Branches de correção de bugs críticos em produção. Estes são criados a partir de `main`, corrigem o problema e são mesclados de volta para `main` e `develop`.
+
+### Fluxo de Trabalho Básico
+
+1. **Iniciar um novo recurso**: Criar uma branch de recurso a partir de `develop`.
+2. **Desenvolver o recurso**: Fazer commits na branch de recurso enquanto desenvolve a nova funcionalidade.
+3. **Concluir o recurso**: Solicitar revisão de código, fazer ajustes conforme necessário e mesclar a branch de recurso de volta para `develop`.
+4. **Preparar para release**: Criar uma branch de release a partir de `develop` para preparar uma nova versão.
+5. **Corrigir bugs**: Se bugs forem descobertos na branch de release, corrigi-los em branches de hotfix a partir de `main`.
+6. **Concluir a release**: Mesclar a branch de release de volta para `main` e `develop`.
+7. **Implantar em produção**: A partir da main, criar tags para versões específicas e implantar em produção.
+
+### Recursos Adicionais
+
+- **Git Flow Cheat Sheet**: Um guia útil para comandos Gitflow: [Git Flow Cheat Sheet](https://danielkummer.github.io/git-flow-cheatsheet/)
+
+Ao seguir o Gitflow, esperamos manter um fluxo de trabalho consistente e organizado durante todo o ciclo de vida do projeto.
