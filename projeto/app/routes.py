@@ -7,13 +7,13 @@ print(sys.path)
 
 from flask import Flask, render_template, request, redirect, url_for
 from modules.gestao_de_tarefa.models.tarefa import Tarefa
-from flaskext.mysql import MySQL
+#from flaskext.mysql import MySQL
 from config import Config
 
 # Cria uma instância do Flask
 app = Flask(__name__)
 app.config.from_object(Config)
-mysql = MySQL(app)
+#mysql = MySQL(app)
 
 # Define uma rota para o endpoint "/"
 @app.route("/")

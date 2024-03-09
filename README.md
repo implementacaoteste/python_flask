@@ -121,15 +121,15 @@ Ao seguir o Gitflow, esperamos manter um fluxo de trabalho consistente e organiz
 #!/bin/bash
 
 # Remova os contêineres existentes
-docker rm -f docker_flask meu_container_flask
+sudo docker rm -f docker_flask meu_container_flask
 
 # Remova a imagem docker_flask existente
-docker rmi $(docker images -q docker_flask)
+sudo docker rmi $(docker images -q docker_flask)
 
 # Construa a nova imagem docker_flask
-docker build -t docker_flask:v1.3 .
+sudo docker build -t docker_flask:v1.3 .
 
 # Execute o contêiner docker_flask
-docker run -d --name docker_flask -p 5000:5000 -v "$(pwd)/projeto:/app" docker_flask:v1.3
+sudo docker run -d --name docker_flask -p 5000:5000 -v "$(pwd)/projeto:/app" docker_flask:v1.3
 
 ```

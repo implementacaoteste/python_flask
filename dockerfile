@@ -18,4 +18,4 @@ COPY projeto/ ./projeto/
 EXPOSE 5000
 
 # Define o comando padrão para iniciar o aplicativo Flask
-CMD ["bash", "-c", "source /venv/bin/activate && python3 projeto/app/routes.py"]
+CMD ["bash", "-c", "source /venv/bin/activate && python3 app/routes.py"]
