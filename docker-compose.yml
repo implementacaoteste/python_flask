@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./projeto:/app
+    depends_on:
+      - db
+
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: db_flask
+      MYSQL_USER: erisvaldo
+      MYSQL_PASSWORD: 123456
+    ports:
+      - "3306:3306"

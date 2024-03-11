@@ -1,4 +1,9 @@
 FROM python:3.8-slim
+#FROM mysql:latest
+
+
+# Instalação do servidor MySQL
+#RUN apt-get update && apt-get install -y mysql-server
 
 # Define o diretório de trabalho como /app
 WORKDIR /app
@@ -7,12 +12,13 @@ WORKDIR /app
 COPY requirements.txt ./
 
 # Instala as dependências do Python listadas no requirements.txt
-RUN apt-get update && apt-get install -y python3-venv python3-pip && \
+RUN apt-get update && \
+    pip install --upgrade pip &&\
+    apt-get install -y python3 python3-venv python3-pip && \
     python3 -m venv /venv && \
     /venv/bin/pip install --no-cache-dir -r requirements.txt
-
 # Copia o diretório do projeto para o diretório de trabalho
-COPY projeto/ ./projeto/
+#COPY projeto/ ./projeto/
 
 # Exponha a porta 5000
 EXPOSE 5000

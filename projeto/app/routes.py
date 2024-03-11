@@ -2,19 +2,20 @@ import sys
 import os
 # Adicione o diretório raiz do projeto ao sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 print(sys.path)
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, current_app
 from modules.gestao_de_tarefa.models.tarefa import Tarefa
-#from flaskext.mysql import MySQL
+from modules.gestao_de_tarefa.bll.tarefa_bll import salvar_tarefa
+from flask_sqlalchemy import SQLAlchemy
+#from flask_migrate import Migrate
 from config import Config
 
 # Cria uma instância do Flask
 app = Flask(__name__)
 app.config.from_object(Config)
-#mysql = MySQL(app)
-
+#db = SQLAlchemy(app)
+#migrate = Migrate(app, db)
 # Define uma rota para o endpoint "/"
 @app.route("/")
 def index():
@@ -31,9 +32,7 @@ def submit_tarefa():
     if request.method == "POST":
         # Obter os dados do formulário
         tarefa = Tarefa(request.form["titulo"], request.form["descricao"])
-
-        #aqui você pode coloar a lógica para salvar no banco de dados
-
+        salvar_tarefa(tarefa)
         # Redirecionar de volta para a página inicial após o cadastro da tarefa
         return redirect(url_for("index"))
     

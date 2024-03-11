@@ -9,7 +9,7 @@ O projeto está organizado da seguinte maneira:
 ```plaintext
 python_flask/
 ├── .gitignore
-├── dockerfile
+├── Dockerfile.python
 ├── LICENSE
 ├── README.md
 ├── requirements.txt
@@ -54,6 +54,7 @@ python_flask/
         ├── test_autenticacao.py
         ├── test_gestao_de_tarefa.py
         └── test_gestao_de_usuario.py
+
 
 ```
 
@@ -121,13 +122,16 @@ Ao seguir o Gitflow, esperamos manter um fluxo de trabalho consistente e organiz
 #!/bin/bash
 
 # Remova os contêineres existentes
-sudo docker rm -f docker_flask meu_container_flask
+sudo docker rm -f docker_flask meu_container_flask --force
 
 # Remova a imagem docker_flask existente
 sudo docker rmi $(docker images -q docker_flask)
 
 # Construa a nova imagem docker_flask
 sudo docker build -t docker_flask:v1.3 .
+
+# Remova os contêineres existentes
+sudo docker rm -f docker_flask meu_container_flask --force
 
 # Execute o contêiner docker_flask
 sudo docker run -d --name docker_flask -p 5000:5000 -v "$(pwd)/projeto:/app" docker_flask:v1.3
