@@ -1,21 +1,24 @@
+import datetime
+
+print('Aplicação iniciada: ', datetime.datetime.now())
 import sys
 import os
 # Adicione o diretório raiz do projeto ao sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 print(sys.path)
-
 from flask import Flask, render_template, request, redirect, url_for, current_app
 from modules.gestao_de_tarefa.models.tarefa import Tarefa
 from modules.gestao_de_tarefa.bll.tarefa_bll import salvar_tarefa
 from flask_sqlalchemy import SQLAlchemy
-#from flask_migrate import Migrate
+from flask_migrate import Migrate
 from config import Config
+print('Fim das importações: ', datetime.datetime.now())
 
 # Cria uma instância do Flask
 app = Flask(__name__)
 app.config.from_object(Config)
-#db = SQLAlchemy(app)
-#migrate = Migrate(app, db)
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 # Define uma rota para o endpoint "/"
 @app.route("/")
 def index():
